@@ -59,138 +59,35 @@ body {
     gap: 0.5rem;
 }
 
-.btn-icon {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-}
-
-.btn-icon:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-primary);
-}
-
-/* Settings Overlay */
-.settings-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-}
-
-.settings-overlay.hidden {
-    opacity: 0;
-    pointer-events: none;
-    display: flex;
-    /* Keep layout for transition */
-}
-
-.settings-content {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    width: 90%;
-    max-width: 320px;
-    padding: 1.5rem;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    transform: scale(1);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.settings-overlay.hidden .settings-content {
-    transform: scale(0.9);
-}
-
-.settings-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.settings-header h2 {
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
-.btn-close {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 1.5rem;
-    cursor: pointer;
-    line-height: 1;
-}
-
-.settings-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-}
-
-.btn-danger {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.2);
-    padding: 1rem;
-    width: 100%;
-    border-radius: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.btn-danger:hover {
-    background: rgba(239, 68, 68, 0.2);
-}
-
-.settings-info {
-    font-size: 0.75rem;
-    color: #444;
-    margin-top: 0.5rem;
-}
-
-/* Absolute Settings Button */
-.btn-settings-corner {
+/* Top Right Actions Container */
+.top-right-actions {
     position: absolute;
     top: 2rem;
     right: 2rem;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.btn-icon-corner {
     background: transparent;
     border: none;
     color: var(--text-muted);
     cursor: pointer;
     padding: 10px;
     border-radius: 50%;
-    z-index: 100;
-    /* Ensure on top */
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.btn-settings-corner:hover {
+.btn-icon-corner:hover {
     color: var(--text-primary);
-    transform: rotate(30deg);
+    background: rgba(255, 255, 255, 0.1);
 }
 
-/* Settings Overlay */
+/* Settings & Calendar Overlay */
 .settings-overlay {
     position: fixed;
     top: 0;
@@ -230,6 +127,11 @@ body {
 
 .settings-overlay.hidden .settings-content {
     transform: scale(0.9);
+}
+
+/* Custom width for calendar */
+.calendar-content {
+    max-width: 400px;
 }
 
 .settings-header {
@@ -277,51 +179,135 @@ body {
     width: 100%;
 }
 
-/* Calendar Grid */
-.calendar-grid {
+/* Calendar Specifics */
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.calendar-weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.full-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
     width: 100%;
 }
 
-.calendar-day {
+.full-calendar-day {
+    aspect-ratio: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    padding: 4px;
-    border-radius: 6px;
+    border-radius: 8px;
+    cursor: pointer;
     background: rgba(255, 255, 255, 0.02);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    position: relative;
+    border: 1px solid transparent;
 }
 
-.calendar-day.today {
+.full-calendar-day:hover {
     background: rgba(255, 255, 255, 0.08);
 }
 
-.day-number {
-    font-size: 0.6rem;
-    color: #555;
+.full-calendar-day.empty {
+    background: transparent;
+    cursor: default;
+}
+
+.full-calendar-day.today {
+    border-color: var(--text-muted);
+}
+
+.full-calendar-day.selected {
+    background: var(--text-primary);
+    color: var(--bg-color);
+    font-weight: 700;
+}
+
+.mini-dots {
+    display: flex;
+    gap: 2px;
+    margin-top: 2px;
+}
+
+.mini-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #444;
+}
+
+.full-calendar-day.selected .mini-dot {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.mini-dot.done {
+    background: var(--accent);
+}
+
+.full-calendar-day.selected .mini-dot.done {
+    background: #000;
+}
+
+/* Selected Day Details */
+.selected-day-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    animation: fadeIn 0.3s ease;
+}
+
+.selected-day-title {
+    font-size: 1rem;
+    color: var(--text-primary);
     font-weight: 600;
 }
 
-.dots-row {
+.selected-day-list {
     display: flex;
-    gap: 2px;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
-.dot {
-    width: 4px;
-    height: 4px;
+.mini-mission-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.mini-mission-item.completed {
+    color: var(--text-primary);
+    text-decoration: line-through;
+}
+
+.mini-check {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #444;
     border-radius: 50%;
-    background-color: #333;
-    /* Empty state (black/dark grey) */
+    flex-shrink: 0;
 }
 
-.dot.filled {
-    background-color: #fff;
-    /* Filled state (white) */
+.mini-mission-item.completed .mini-check {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
 }
 
 /* Reset Button */
@@ -345,11 +331,7 @@ body {
     border-color: #551111;
 }
 
-.settings-info {
-    display: none;
-    /* Hidden as requested */
-}
-
+/* Steps and Form (Keep existing) */
 .step {
     display: flex;
     flex-direction: column;
@@ -371,7 +353,6 @@ body {
     animation: fadeIn 0.5s ease-out;
 }
 
-/* Steps Header override for back button placement */
 .step .header {
     position: relative;
 }
@@ -393,14 +374,12 @@ body {
     color: var(--text-primary);
 }
 
-/* Form Groups */
 .setup-form {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
 }
 
-/* Elegant Text Input */
 input[type="text"] {
     background: transparent;
     border: none;
@@ -426,7 +405,6 @@ input[type="text"]::placeholder {
     opacity: 1;
 }
 
-/* Premium Tag Selector */
 .tag-selector {
     display: flex;
     flex-wrap: wrap;
@@ -462,11 +440,9 @@ input[type="text"]::placeholder {
     transform: scale(1.05);
 }
 
-/* Navigation Buttons */
 .step-actions {
     display: flex;
     justify-content: flex-end;
-    /* Next button to the right */
     margin-top: 1rem;
 }
 
@@ -477,7 +453,6 @@ input[type="text"]::placeholder {
     border: none;
     padding: 1rem 2rem;
     border-radius: 100px;
-    /* Pill shape */
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -508,20 +483,16 @@ input[type="text"]::placeholder {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    /* More space between missions */
 }
 
 .mission-item {
     display: flex;
     align-items: center;
-    /* Center vertically */
     gap: 1.5rem;
     cursor: pointer;
     padding: 1rem 0;
-    /* Clearer tap area */
     transition: opacity 0.3s ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    /* Very subtle divider */
 }
 
 .mission-item:last-child {
@@ -532,22 +503,18 @@ input[type="text"]::placeholder {
     opacity: 0.8;
 }
 
-/* Checkbox container for better alignment */
 .checkbox-container {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 4px;
-    /* Slight offset compensation */
 }
 
 .checkbox-custom {
     width: 24px;
     height: 24px;
     border: 1px solid #444;
-    /* Clean dark grey */
     border-radius: 50%;
-    /* Circle looks more modern/friendly */
     transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     background: transparent;
 }
@@ -558,7 +525,6 @@ input[type="text"]::placeholder {
     transform: scale(0.9);
 }
 
-/* Content & Meta */
 .mission-content {
     display: flex;
     flex-direction: column;
@@ -587,17 +553,11 @@ input[type="text"]::placeholder {
     color: #444;
 }
 
-/* Footer & Status */
 .status-message {
     text-align: center;
     color: var(--text-muted);
     font-size: 0.9rem;
     animation: fadeIn 1s ease;
-}
-
-.footer-actions {
-    margin-top: 1rem;
-    text-align: center;
 }
 
 .btn-text {
@@ -629,4 +589,15 @@ input[type="text"]::placeholder {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Confetti Canvas */
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
 }
