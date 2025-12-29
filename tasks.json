@@ -1,74 +1,848 @@
 [
-    { "text": "Beber 2.5 litros de agua hoy", "tags": ["health"] },
-    { "text": "Hacer 20 flexiones", "tags": ["health"] },
-    { "text": "Caminar 30 minutos", "tags": ["health"] },
-    { "text": "Comer una ensalada", "tags": ["health"] },
-    { "text": "No comer azúcar hoy", "tags": ["health"] },
-    { "text": "Dormir 8 horas esta noche", "tags": ["health"] },
-    { "text": "Hacer 5 minutos de estiramientos", "tags": ["health"] },
-    { "text": "Subir solo por escaleras hoy", "tags": ["health"] },
-    { "text": "Hacer 30 sentadillas", "tags": ["health"] },
-    { "text": "Desayunar sin mirar el móvil", "tags": ["health"] },
-    { "text": "Salir a correr 15 min", "tags": ["health"] },
-    { "text": "Saltar la cuerda 5 min", "tags": ["health"] },
-    { "text": "Comer 2 frutas distintas", "tags": ["health"] },
-    { "text": "No tomar alcohol hoy", "tags": ["health"] },
-    { "text": "Cenar ligero antes de las 9pm", "tags": ["health"] },
-    { "text": "Hacer plancha por 1 minuto", "tags": ["health"] },
-
-    { "text": "Meditar 5 minutos", "tags": ["mind"] },
-    { "text": "Leer 10 páginas de un libro", "tags": ["mind"] },
-    { "text": "Escribir 3 cosas que agradeces", "tags": ["mind"] },
-    { "text": "No quejarte en voz alta hoy", "tags": ["mind"] },
-    { "text": "Estar 30 min sin pantallas", "tags": ["mind"] },
-    { "text": "Escuchar música clásica/lofi", "tags": ["mind"] },
-    { "text": "Observar el atardecer", "tags": ["mind"] },
-    { "text": "Respirar profundo en 4-7-8 x3", "tags": ["mind"] },
-    { "text": "Escribir cómo te sientes hoy", "tags": ["mind"] },
-    { "text": "Visualizar tus metas 5 min", "tags": ["mind"] },
-    { "text": "No mirar noticias hoy", "tags": ["mind"] },
-    { "text": "Dar un paseo en silencio", "tags": ["mind"] },
-    { "text": "Identificar una emoción y aceptarla", "tags": ["mind"] },
-
-    { "text": "Ordenar tu escritorio", "tags": ["productivity"] },
-    { "text": "Hacer la tarea más difícil primero", "tags": ["productivity"] },
-    { "text": "Borrar 50 emails antiguos", "tags": ["productivity"] },
-    { "text": "Planificar el día de mañana", "tags": ["productivity"] },
-    { "text": "Limpiar archivos del escritorio PC", "tags": ["productivity"] },
-    { "text": "Lavar los platos inmediatamente", "tags": ["productivity"] },
-    { "text": "Organizar las fotos del móvil", "tags": ["productivity"] },
-    { "text": "Cancelar una suscripción inútil", "tags": ["productivity"] },
-    { "text": "Definir 1 objetivo anual", "tags": ["productivity"] },
-    { "text": "Limpiar la pantalla del móvil/PC", "tags": ["productivity"] },
-    { "text": "Hacer backup de archivos importantes", "tags": ["productivity"] },
-
-    { "text": "Llamar a un familiar", "tags": ["social"] },
-    { "text": "Enviar mensaje a un amigo lejano", "tags": ["social"] },
-    { "text": "Hacer un cumplido genuino", "tags": ["social"] },
-    { "text": "Escuchar activamente a alguien", "tags": ["social"] },
-    { "text": "Sonreír a un desconocido", "tags": ["social"] },
-    { "text": "Preguntar '¿Cómo estás?' y esperar respuesta", "tags": ["social"] },
-    { "text": "Organizar una salida futura", "tags": ["social"] },
-    { "text": "Agradecer algo a un compañero", "tags": ["social"] },
-    { "text": "No interrumpir cuando te hablen", "tags": ["social"] },
-
-    { "text": "Dibujar algo (aunque sea mal)", "tags": ["creativity"] },
-    { "text": "Escribir un poema corto", "tags": ["creativity"] },
-    { "text": "Tomar una foto artística", "tags": ["creativity"] },
-    { "text": "Escuchar un álbum nuevo entero", "tags": ["creativity"] },
-    { "text": "Ver un documental de arte/diseño", "tags": ["creativity"] },
-    { "text": "Cambiar el fondo de pantalla", "tags": ["creativity"] },
-    { "text": "Cocinar algo sin receta exacta", "tags": ["creativity"] },
-    { "text": "Escribir una idea de negocio loca", "tags": ["creativity"] },
-
-    { "text": "Ducharse con agua fría", "tags": ["comfort"] },
-    { "text": "Hablar con alguien nuevo", "tags": ["comfort"] },
-    { "text": "Aprender una palabra rara", "tags": ["comfort"] },
-    { "text": "Cocinar algo nuevo", "tags": ["comfort"] },
-    { "text": "Ir por un camino diferente a casa", "tags": ["comfort"] },
-    { "text": "Vestir algo que no sueles usar", "tags": ["comfort"] },
-    { "text": "Ver una película en un idioma raro", "tags": ["comfort"] },
-    { "text": "Dormir del otro lado de la cama", "tags": ["comfort"] },
-    { "text": "Intentar usar la mano no dominante", "tags": ["comfort"] },
-    { "text": "Donar algo que no uses", "tags": ["comfort"] }
+    {
+        "text": "Beber 2.5 litros de agua hoy",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Hacer 20 flexiones",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Caminar 30 minutos",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Comer una ensalada",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "No comer azúcar hoy",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Dormir 8 horas esta noche",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Hacer 5 minutos de estiramientos",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Subir solo por escaleras hoy",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Hacer 30 sentadillas",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Desayunar sin mirar el móvil",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Salir a correr 15 min",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Saltar la cuerda 5 min",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Comer 2 frutas distintas",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "No tomar alcohol hoy",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Cenar ligero antes de las 9pm",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Hacer plancha por 1 minuto",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Evitar alimentos procesados todo el día",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Hacer 10 respiraciones profundas al despertar",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Tomar un té verde o infusión",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Hacer ejercicio de intervalos (HIIT) 10 min",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Caminar descalzo en casa 10 min",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Mantener una buena postura todo el día",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Sustituir el café por agua en una comida",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Correr en el sitio durante 3 min",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Hacer 50 jumping jacks",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "No usar el ascensor en todo el día",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Comer un puñado de nueces o almendras",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Estirar el cuello y hombros cada hora",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Preparar un smoothie verde",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Limitar el consumo de sal hoy",
+        "tags": [
+            "health"
+        ]
+    },
+    {
+        "text": "Meditar 5 minutos",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Leer 10 páginas de un libro",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Escribir 3 cosas que agradeces",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "No quejarte en voz alta hoy",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Estar 30 min sin pantallas",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Escuchar música clásica/lofi",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Observar el atardecer",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Respirar profundo en 4-7-8 x3",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Escribir cómo te sientes hoy",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Visualizar tus metas 5 min",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "No mirar noticias hoy",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Dar un paseo en silencio",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Identificar una emoción y aceptarla",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Dedicar 10 min a no hacer NADA",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Encender una vela y observarla",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Hacer un escaneo corporal mental",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Leer un poema",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Desconectar datos/wifi 1 hora",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Reflexionar sobre un logro reciente",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Ver fotos antiguas y recordar lo bueno",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Tomar un baño relajante",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Practicar mindfulness lavando los platos",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Escribir una carta a tu yo del futuro",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Escuchar un podcast inspirador",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Ordenar tu espacio mental escribiendo pendientes",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Perdonarte por un error pasado",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Mirar al cielo durante 2 minutos",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Agradecer mentalmente a 3 personas",
+        "tags": [
+            "mind"
+        ]
+    },
+    {
+        "text": "Ordenar tu escritorio",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Hacer la tarea más difícil primero",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Borrar 50 emails antiguos",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Planificar el día de mañana",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Limpiar archivos del escritorio PC",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Lavar los platos inmediatamente",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Organizar las fotos del móvil",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Cancelar una suscripción inútil",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Definir 1 objetivo anual",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Limpiar la pantalla del móvil/PC",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Hacer backup de archivos importantes",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Usar la técnica Pomodoro una vez",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Tirar 5 cosas que no uses",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Pagar una cuenta pendiente",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Actualizar tu lista de tareas",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Responder a mensajes pendientes",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Organizar un cajón desordenado",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Establecer límites de tiempo en apps",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Revisar tus gastos de la semana",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Aprender un atajo de teclado nuevo",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Desactivar notificaciones innecesarias",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Hacer la cama perfectamente",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Preparar la ropa para mañana",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Escribir tus 3 prioridades absolutas",
+        "tags": [
+            "productivity"
+        ]
+    },
+    {
+        "text": "Llamar a un familiar",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Enviar mensaje a un amigo lejano",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Hacer un cumplido genuino",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Escuchar activamente a alguien",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Sonreír a un desconocido",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Preguntar '¿Cómo estás?' y esperar respuesta",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Organizar una salida futura",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Agradecer algo a un compañero",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "No interrumpir cuando te hablen",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Dar los buenos días con energía",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Escribir un comentario positivo en redes",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Invitar a un café a alguien",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Recomendar algo que te guste a un amigo",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Pedir perdón si te equivocaste",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Hacer reír a alguien",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Donar ropa o comida",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Ayudar a alguien con una tarea pequeña",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Dejar una nota amable a alguien",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Llamar a tus abuelos/padres",
+        "tags": [
+            "social"
+        ]
+    },
+    {
+        "text": "Dibujar algo (aunque sea mal)",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Escribir un poema corto",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Tomar una foto artística",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Escuchar un álbum nuevo entero",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Ver un documental de arte/diseño",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Cambiar el fondo de pantalla",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Cocinar algo sin receta exacta",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Escribir una idea de negocio loca",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Hacer un collage digital o físico",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Leer sobre un tema que desconozcas",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Intentar origami con un papel",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Reorganizar los muebles de una habitación",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Cantar una canción en la ducha",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Ver una película clásica que no hayas visto",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Escribir el inicio de una historia",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Personalizar un objeto tuyo",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Crear una playlist nueva",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Visitar un museo virtual",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Doodling mientras escuchas música",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Inventar una nueva palabra",
+        "tags": [
+            "creativity"
+        ]
+    },
+    {
+        "text": "Ducharse con agua fría",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Hablar con alguien nuevo",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Aprender una palabra rara",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Cocinar algo nuevo",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Ir por un camino diferente a casa",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Vestir algo que no sueles usar",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Ver una película en un idioma raro",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Dormir del otro lado de la cama",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Intentar usar la mano no dominante",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Donar algo que no uses",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Aprender a decir hola en 5 idiomas",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Hacer ayuno de redes sociales 12h",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Leer un artículo de una opinión opuesta",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Sentarte en un lugar diferente al comer",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Probar una fruta/verdura exótica",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Escuchar un género musical que odies",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Empezar una conversación en el ascensor",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Escribir con la mano izquierda (o derecha)",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Ir al cine o a comer solo",
+        "tags": [
+            "comfort"
+        ]
+    },
+    {
+        "text": "Arreglar algo roto en vez de tirarlo",
+        "tags": [
+            "comfort"
+        ]
+    }
 ]

@@ -231,9 +231,17 @@ class Random {
 
 function getMissionsForDay() {
     const today = getTodayString();
+
+    // Create unique seed from Date + User Unique Data
+    // We use joinedDate as a salt, or name if joinedDate is missing fallback
+    const userSalt = userProfile.joinedDate || userProfile.name || "default";
+    const seedString = today + userSalt;
+
     let seed = 0;
-    for (let i = 0; i < today.length; i++) seed = ((seed << 5) - seed) + today.charCodeAt(i);
-    seed |= 0;
+    for (let i = 0; i < seedString.length; i++) {
+        seed = ((seed << 5) - seed) + seedString.charCodeAt(i);
+        seed |= 0;
+    }
 
     const rng = new Random(seed);
 
