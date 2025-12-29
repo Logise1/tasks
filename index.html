@@ -61,9 +61,20 @@
 
         <!-- MAIN APP (Shown after setup) -->
         <div id="mainApp" class="container hidden">
-            <header class="header">
-                <span class="date-badge" id="dateBadge">HOY</span>
-                <p class="subtitle" id="greeting">Tus 3 Misiones</p>
+            <header class="header app-header-row">
+                <div class="header-left">
+                    <span class="date-badge" id="dateBadge">HOY</span>
+                    <p class="subtitle" id="greeting">Tus Misiones</p>
+                </div>
+                <button id="btnSettings" class="btn-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z">
+                        </path>
+                    </svg>
+                </button>
             </header>
 
             <main class="mission-list" id="missionList">
@@ -73,9 +84,21 @@
             <div id="allCompleteMessage" class="status-message hidden">
                 <p>Todo listo por hoy.</p>
             </div>
+        </div>
 
-            <div class="footer-actions">
-                <button id="btnReset" class="btn-text">Reiniciar Perfil</button>
+        <!-- SETTINGS MENU OVERLAY -->
+        <div id="settingsMenu" class="settings-overlay hidden">
+            <div class="settings-content">
+                <header class="settings-header">
+                    <h2>Ajustes</h2>
+                    <button id="btnCloseSettings" class="btn-close">&times;</button>
+                </header>
+                <div class="settings-body">
+                    <button id="btnResetProfile" class="btn-danger">
+                        Reiniciar Perfil
+                    </button>
+                    <p class="settings-info">Versión 2.0 • Minimal</p>
+                </div>
             </div>
         </div>
 

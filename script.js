@@ -1,75 +1,39 @@
-/* --- DATA POOL --- */
-const ALL_MISSIONS = [
-    // Health
-    { text: "Beber 2.5 litros de agua hoy", tags: ["health"] },
-    { text: "Hacer 20 flexiones", tags: ["health"] },
-    { text: "Caminar 30 minutos", tags: ["health"] },
-    { text: "Comer una ensalada", tags: ["health"] },
-    { text: "No comer azúcar hoy", tags: ["health"] },
-    { text: "Dormir 8 horas esta noche", tags: ["health"] },
-    { text: "Hacer 5 minutos de estiramientos", tags: ["health"] },
-    { text: "Subir solo por escaleras hoy", tags: ["health"] },
-    { text: "Hacer 30 sentadillas", tags: ["health"] },
-    { text: "Desayunar sin mirar el móvil", tags: ["health"] },
-
-    // Mind
-    { text: "Meditar 5 minutos", tags: ["mind"] },
-    { text: "Leer 10 páginas de un libro", tags: ["mind"] },
-    { text: "Escribir 3 cosas que agradeces", tags: ["mind"] },
-    { text: "No quejarte en voz alta hoy", tags: ["mind"] },
-    { text: "Estar 30 min sin pantallas", tags: ["mind"] },
-    { text: "Escuchar música clásica/lofi", tags: ["mind"] },
-    { text: "Observar el atardecer", tags: ["mind"] },
-    { text: "Respirar profundo en 4-7-8 x3", tags: ["mind"] },
-
-    // Productivity
-    { text: "Ordenar tu escritorio", tags: ["productivity"] },
-    { text: "Hacer la tarea más difícil primero", tags: ["productivity"] },
-    { text: "Borrar 50 emails antiguos", tags: ["productivity"] },
-    { text: "Planificar el día de mañana", tags: ["productivity"] },
-    { text: "Limpiar archivos del escritorio PC", tags: ["productivity"] },
-    { text: "Lavar los platos inmediatamente", tags: ["productivity"] },
-
-    // Social
-    { text: "Llamar a un familiar", tags: ["social"] },
-    { text: "Enviar mensaje a un amigo lejano", tags: ["social"] },
-    { text: "Hacer un cumplido genuino", tags: ["social"] },
-    { text: "Escuchar activamente a alguien", tags: ["social"] },
-    { text: "Sonreír a un desconocido", tags: ["social"] },
-
-    // Creativity
-    { text: "Dibujar algo (aunque sea mal)", tags: ["creativity"] },
-    { text: "Escribir un poema corto", tags: ["creativity"] },
-    { text: "Tomar una foto artística", tags: ["creativity"] },
-    { text: "Escuchar un álbum nuevo entero", tags: ["creativity"] },
-
-    // Comfort Zone
-    { text: "Ducharse con agua fría", tags: ["comfort"] },
-    { text: "Hablar con alguien nuevo", tags: ["comfort"] },
-    { text: "Aprender una palabra rara", tags: ["comfort"] },
-    { text: "Cocinar algo nuevo", tags: ["comfort"] }
-];
+/* --- STATE --- */
+let ALL_MISSIONS = [];
+let userProfile = JSON.parse(localStorage.getItem('userProfile')) || null;
 
 /* --- ELEMENTS --- */
 const onboardingView = document.getElementById('onboarding');
 const mainAppView = document.getElementById('mainApp');
+const settingsMenu = document.getElementById('settingsMenu');
 
-// Inputs
 const userNameInput = document.getElementById('userName');
 const tagSelector = document.getElementById('tagSelector');
 
-// Display
 const greeting = document.getElementById('greeting');
 const dateBadge = document.getElementById('dateBadge');
 const missionList = document.getElementById('missionList');
 const allCompleteMessage = document.getElementById('allCompleteMessage');
-const btnReset = document.getElementById('btnReset');
 
-/* --- STATE MANAGEMENT --- */
-let userProfile = JSON.parse(localStorage.getItem('userProfile')) || null;
+const btnSettings = document.getElementById('btnSettings');
+const btnCloseSettings = document.getElementById('btnCloseSettings');
+const btnResetProfile = document.getElementById('btnResetProfile');
 
 /* --- INIT --- */
-function init() {
+async function init() {
+    try {
+        const response = await fetch('tasks.json');
+        ALL_MISSIONS = await response.json();
+    } catch (e) {
+        console.error("Failed to load missions", e);
+        // Fallback minimal tasks if fetch fails
+        ALL_MISSIONS = [
+            { text: "Beber agua", tags: ["health"] },
+            { text: "Leer un poco", tags: ["mind"] },
+            { text: "Ordenar algo", tags: ["productivity"] }
+        ];
+    }
+
     if (!userProfile) {
         showOnboarding();
     } else {
@@ -82,25 +46,27 @@ function showOnboarding() {
     onboardingView.classList.remove('hidden');
     mainAppView.classList.add('hidden');
 
-    // Tag Selection Logic
+    // Tag Selection
     const tagButtons = tagSelector.querySelectorAll('.tag');
     tagButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.classList.toggle('selected');
-        });
+        btn.onclick = () => btn.classList.toggle('selected');
     });
 
-    // Enter key on input to go next
+    // Enter key
     userNameInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') goToStep2();
     });
 }
 
-// Step 1 -> Step 2
+// Navigation Handlers
 const btnToStep2 = document.getElementById('btnToStep2');
-if (btnToStep2) {
-    btnToStep2.addEventListener('click', goToStep2);
-}
+if (btnToStep2) btnToStep2.onclick = goToStep2;
+
+const btnBackToStep1 = document.getElementById('btnBackToStep1');
+if (btnBackToStep1) btnBackToStep1.onclick = goToStep1;
+
+const btnFinishSetup = document.getElementById('btnFinishSetup');
+if (btnFinishSetup) btnFinishSetup.onclick = finishSetup;
 
 function goToStep2() {
     const name = userNameInput.value.trim();
@@ -119,24 +85,14 @@ function goToStep2() {
     }, 100);
 }
 
-// Step 2 -> Step 1
-const btnBackToStep1 = document.getElementById('btnBackToStep1');
-if (btnBackToStep1) {
-    btnBackToStep1.addEventListener('click', () => {
-        document.getElementById('step2').classList.remove('active-step');
-        document.getElementById('step2').classList.add('hidden-step');
+function goToStep1() {
+    document.getElementById('step2').classList.remove('active-step');
+    document.getElementById('step2').classList.add('hidden-step');
 
-        setTimeout(() => {
-            document.getElementById('step1').classList.remove('hidden-step');
-            document.getElementById('step1').classList.add('active-step');
-        }, 100);
-    });
-}
-
-// Step 2 -> Finish
-const btnFinishSetup = document.getElementById('btnFinishSetup');
-if (btnFinishSetup) {
-    btnFinishSetup.addEventListener('click', finishSetup);
+    setTimeout(() => {
+        document.getElementById('step1').classList.remove('hidden-step');
+        document.getElementById('step1').classList.add('active-step');
+    }, 100);
 }
 
 function finishSetup() {
@@ -169,14 +125,35 @@ function showApp() {
     renderMissions();
 }
 
+/* --- MENU / SETTINGS --- */
+if (btnSettings) {
+    btnSettings.onclick = () => {
+        settingsMenu.classList.remove('hidden');
+    };
+}
+
+if (btnCloseSettings) {
+    btnCloseSettings.onclick = () => {
+        settingsMenu.classList.add('hidden');
+    };
+}
+
+if (btnResetProfile) {
+    btnResetProfile.onclick = () => {
+        if (confirm('¿Estás seguro? Se borrará todo tu progreso y perfil.')) {
+            localStorage.clear();
+            location.reload();
+        }
+    };
+}
+
+/* --- MISSION ENGINE --- */
 function getTodayString() {
     return new Date().toISOString().split('T')[0];
 }
 
 class Random {
-    constructor(seed) {
-        this.state = seed;
-    }
+    constructor(seed) { this.state = seed; }
     next() {
         this.state |= 0;
         this.state = this.state + 0x9e3779b9 | 0;
@@ -187,7 +164,7 @@ class Random {
         return ((t = t ^ (t >>> 15)) >>> 0) / 4294967296;
     }
     pick(array) {
-        if (!array.length) return null;
+        if (!array || !array.length) return null;
         return array[Math.floor(this.next() * array.length)];
     }
 }
@@ -195,10 +172,8 @@ class Random {
 function getMissionsForDay() {
     const today = getTodayString();
     let seed = 0;
-    for (let i = 0; i < today.length; i++) {
-        seed = ((seed << 5) - seed) + today.charCodeAt(i);
-        seed |= 0;
-    }
+    for (let i = 0; i < today.length; i++) seed = ((seed << 5) - seed) + today.charCodeAt(i);
+    seed |= 0;
 
     const rng = new Random(seed);
 
@@ -216,8 +191,10 @@ function getMissionsForDay() {
     const usedIndicesPrimary = new Set();
 
     function pickUniquePrimary() {
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 30; i++) {
             const idx = Math.floor(rng.next() * poolPrimary.length);
+            // Avoid duplicates by simple index check (flawed if pools change, but acceptable for MVP)
+            // Ideally we check text uniqueness
             if (!usedIndicesPrimary.has(idx)) {
                 usedIndicesPrimary.add(idx);
                 return poolPrimary[idx];
@@ -288,13 +265,5 @@ function renderMissions() {
     }
 }
 
-/* --- RESET --- */
-btnReset.addEventListener('click', () => {
-    if (confirm('¿Reiniciar tu perfil y empezar de cero?')) {
-        localStorage.removeItem('userProfile');
-        location.reload();
-    }
-});
-
-// Run
+// Start
 init();
