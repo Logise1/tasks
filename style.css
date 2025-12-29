@@ -1,0 +1,356 @@
+:root {
+    --bg-color: #1a1a1a;
+    --text-primary: #ededed;
+    --text-muted: #666;
+    --border-color: #333;
+    --accent: #fff;
+    --tag-bg: #262626;
+    --tag-selected: #fff;
+    --tag-text-selected: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    overflow: hidden;
+    /* Important for sliding steps */
+}
+
+.container.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* Header */
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.date-badge {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--text-primary);
+}
+
+.title-lg {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+/* Multi-step Logic */
+.step {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    transition: all 0.5s ease-in-out;
+    width: 100%;
+}
+
+.hidden-step {
+    display: none;
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.active-step {
+    display: flex;
+    opacity: 1;
+    transform: translateX(0);
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Steps Header override for back button placement */
+.step .header {
+    position: relative;
+}
+
+.btn-back {
+    position: absolute;
+    left: -2rem;
+    top: 5px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s;
+}
+
+.btn-back:hover {
+    color: var(--text-primary);
+}
+
+/* Form Groups */
+.setup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Elegant Text Input */
+input[type="text"] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #333;
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 300;
+    padding: 0.5rem 0;
+    font-family: inherit;
+    outline: none;
+    border-radius: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+}
+
+input[type="text"]:focus {
+    border-bottom-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+input[type="text"]::placeholder {
+    color: #333;
+    opacity: 1;
+}
+
+/* Premium Tag Selector */
+.tag-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background: transparent;
+    border: 1px solid #444;
+    color: #888;
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.tag:hover {
+    border-color: #666;
+    color: #ccc;
+    transform: translateY(-2px);
+}
+
+.tag.selected {
+    background: var(--text-primary);
+    color: var(--bg-color);
+    border-color: var(--text-primary);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+    transform: scale(1.05);
+}
+
+/* Navigation Buttons */
+.step-actions {
+    display: flex;
+    justify-content: flex-end;
+    /* Next button to the right */
+    margin-top: 1rem;
+}
+
+.btn-next,
+.btn-start {
+    background: var(--text-primary);
+    color: var(--bg-color);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    /* Pill shape */
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-next:hover,
+.btn-start:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    transform: translateX(3px);
+}
+
+.btn-start {
+    width: 100%;
+    justify-content: center;
+    border-radius: 16px;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Mission List */
+.mission-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /* More space between missions */
+}
+
+.mission-item {
+    display: flex;
+    align-items: center;
+    /* Center vertically */
+    gap: 1.5rem;
+    cursor: pointer;
+    padding: 1rem 0;
+    /* Clearer tap area */
+    transition: opacity 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Very subtle divider */
+}
+
+.mission-item:last-child {
+    border-bottom: none;
+}
+
+.mission-item:hover {
+    opacity: 0.8;
+}
+
+/* Checkbox container for better alignment */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 4px;
+    /* Slight offset compensation */
+}
+
+.checkbox-custom {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #444;
+    /* Clean dark grey */
+    border-radius: 50%;
+    /* Circle looks more modern/friendly */
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    background: transparent;
+}
+
+.mission-item.completed .checkbox-custom {
+    background-color: var(--text-primary);
+    border-color: var(--text-primary);
+    transform: scale(0.9);
+}
+
+/* Content & Meta */
+.mission-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 100%;
+}
+
+.mission-meta {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.mission-text {
+    font-size: 1.15rem;
+    line-height: 1.4;
+    font-weight: 300;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.mission-item.completed .mission-text {
+    text-decoration: line-through;
+    color: #444;
+}
+
+/* Footer & Status */
+.status-message {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    animation: fadeIn 1s ease;
+}
+
+.footer-actions {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: #444;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+.btn-text:hover {
+    color: var(--text-muted);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión del Día</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- ONBOARDING (Multi-step) -->
+        <div id="onboarding" class="container hidden">
+
+            <!-- Step 1: Name -->
+            <div class="step active-step" id="step1">
+                <header class="header">
+                    <p class="subtitle">Paso 1/2</p>
+                    <h1 class="title-lg">¿Quién eres?</h1>
+                </header>
+                <div class="setup-form">
+                    <div class="form-group">
+                        <input type="text" id="userName" placeholder="Tu nombre..." autocomplete="off">
+                    </div>
+                </div>
+                <div class="step-actions">
+                    <button type="button" class="btn-next" id="btnToStep2">Siguiente &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Interests -->
+            <div class="step hidden-step" id="step2">
+                <header class="header">
+                    <button class="btn-back" id="btnBackToStep1">&larr;</button>
+                    <p class="subtitle">Paso 2/2</p>
+                    <h1 class="title-lg">¿Tu enfoque?</h1>
+                </header>
+                <div class="setup-form">
+                    <div class="form-group">
+                        <div class="tag-selector" id="tagSelector">
+                            <button type="button" class="tag" data-value="health">Salud Física</button>
+                            <button type="button" class="tag" data-value="mind">Mente & Calma</button>
+                            <button type="button" class="tag" data-value="productivity">Productividad</button>
+                            <button type="button" class="tag" data-value="social">Social</button>
+                            <button type="button" class="tag" data-value="creativity">Creatividad</button>
+                            <button type="button" class="tag" data-value="comfort">Retos</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-actions">
+                    <button type="button" class="btn-start" id="btnFinishSetup">Comenzar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- MAIN APP (Shown after setup) -->
+        <div id="mainApp" class="container hidden">
+            <header class="header">
+                <span class="date-badge" id="dateBadge">HOY</span>
+                <p class="subtitle" id="greeting">Tus 3 Misiones</p>
+            </header>
+
+            <main class="mission-list" id="missionList">
+                <!-- Missions injected here -->
+            </main>
+
+            <div id="allCompleteMessage" class="status-message hidden">
+                <p>Todo listo por hoy.</p>
+            </div>
+
+            <div class="footer-actions">
+                <button id="btnReset" class="btn-text">Reiniciar Perfil</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
