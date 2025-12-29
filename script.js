@@ -123,12 +123,16 @@ function showApp() {
     mainAppView.classList.remove('hidden');
     greeting.textContent = `Misiones para ${userProfile.name}`;
     renderMissions();
+    renderCalendar();
 }
 
 /* --- MENU / SETTINGS --- */
 if (btnSettings) {
-    btnSettings.onclick = () => {
+    btnSettings.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         settingsMenu.classList.remove('hidden');
+        renderCalendar(); // Refresh calendar when opening
     };
 }
 
@@ -138,13 +142,69 @@ if (btnCloseSettings) {
     };
 }
 
+let resetConfirmTimer = null;
 if (btnResetProfile) {
     btnResetProfile.onclick = () => {
-        if (confirm('¿Estás seguro? Se borrará todo tu progreso y perfil.')) {
+        if (btnResetProfile.dataset.confirming === 'true') {
+            // ACTUALLY DELETE
             localStorage.clear();
             location.reload();
+        } else {
+            // FIRST CLICK
+            btnResetProfile.dataset.confirming = 'true';
+            const originalText = btnResetProfile.textContent;
+            btnResetProfile.textContent = '¿Seguro? Pulsa de nuevo';
+            btnResetProfile.style.borderColor = '#ef4444';
+            btnResetProfile.style.background = '#331111';
+
+            // Auto revert after 3s
+            if (resetConfirmTimer) clearTimeout(resetConfirmTimer);
+            resetConfirmTimer = setTimeout(() => {
+                btnResetProfile.dataset.confirming = 'false';
+                btnResetProfile.textContent = 'Reiniciar Perfil';
+                btnResetProfile.style.borderColor = '';
+                btnResetProfile.style.background = '';
+            }, 3000);
         }
     };
+}
+
+/* --- CALENDAR LOGIC --- */
+function renderCalendar() {
+    const calendarGrid = document.getElementById('calendarGrid');
+    if (!calendarGrid) return;
+    calendarGrid.innerHTML = '';
+
+    // Show last 14 days
+    const dates = [];
+    for (let i = 13; i >= 0; i--) {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        dates.push(d);
+    }
+
+    dates.forEach(date => {
+        const dateStr = date.toISOString().split('T')[0];
+        const status = JSON.parse(localStorage.getItem(`status_${dateStr}`)) || [false, false, false];
+        const dayNum = date.getDate();
+        const isToday = (dateStr === new Date().toISOString().split('T')[0]);
+
+        const dayEl = document.createElement('div');
+        dayEl.className = `calendar-day ${isToday ? 'today' : ''}`;
+
+        // 3 Dots
+        let dotsHtml = '';
+        status.forEach(isDone => {
+            dotsHtml += `<div class="dot ${isDone ? 'filled' : ''}"></div>`;
+        });
+
+        dayEl.innerHTML = `
+            <div class="dots-row">${dotsHtml}</div>
+            <span class="day-number">${dayNum}</span>
+        `;
+
+        calendarGrid.appendChild(dayEl);
+    });
 }
 
 /* --- MISSION ENGINE --- */
@@ -193,8 +253,6 @@ function getMissionsForDay() {
     function pickUniquePrimary() {
         for (let i = 0; i < 30; i++) {
             const idx = Math.floor(rng.next() * poolPrimary.length);
-            // Avoid duplicates by simple index check (flawed if pools change, but acceptable for MVP)
-            // Ideally we check text uniqueness
             if (!usedIndicesPrimary.has(idx)) {
                 usedIndicesPrimary.add(idx);
                 return poolPrimary[idx];
@@ -253,6 +311,7 @@ function renderMissions() {
             savedStatus[index] = !savedStatus[index];
             localStorage.setItem(`status_${today}`, JSON.stringify(savedStatus));
             renderMissions();
+            renderCalendar(); // Update calendar in real-time
         };
 
         missionList.appendChild(item);
